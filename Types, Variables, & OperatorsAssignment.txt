@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class Solution
+{
+ public static void TrywithLocal(int x)
+{
+
+  int x; 
+  String name;
+  int else;  // Not a statement
+  Scanner sc=new Scanner(System.in);
+  System.out.println(x);
+  x=sc.nextInt();
+  else=sc.nextInt();   //else without 'if;
+  System.out.println(x);
+  System.out.println(name+" "+else); //illegal start of expression
+   
+ 
+}
+  public static void main(String[] args)
+  {
+    Scanner scn=new Scanner(System.in);
+    int if;    // Not a statement
+    String name;
+    if=scn.nextInt();// Illegal Start of expression
+  int if=scn.nextInt():
+    System.out.println(if+" "+ name);// Both illegal start of exprssion and not a statement.
+   TrywithLocal(x);
+    
+  }
+
+
+}
