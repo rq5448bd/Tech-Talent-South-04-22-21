@@ -1,0 +1,194 @@
+/**
+ * 
+ */
+
+/**
+ * @author rider
+ *
+ */
+import java.util.*;
+public class AsciiChars {
+
+	/**
+	 * @param args
+	 */
+	
+	public static void printNumbers()
+	  {
+	    // TODO: print valid numeric input
+		int i=0;
+		for(i=0;i<128;i++) {
+			Character c = (char)i;
+			if(Character.isDigit(c)) {
+				System.out.print(c+" ");
+			}
+		}
+		  System.out.println();
+
+	  }
+
+	  public static void printLowerCase()
+	  {
+	    // TODO: print valid lowercase alphabetic input
+		  int i=0;
+			for(i=0;i<128;i++) {
+				Character c = (char)i;
+				if(Character.isLowerCase(c)) {
+					System.out.print(c+" ");
+				}
+			}
+	  System.out.println();
+	  }
+
+	  public static void printUpperCase()
+	  {
+	    // TODO: print valid uppercase alphabetic input
+		  int i=0;
+			for(i=0;i<128;i++) {
+				Character c = (char)i;
+				if(Character.isUpperCase(c)) {
+					System.out.print(c+" ");
+				}
+			}
+			  System.out.println();
+
+	  }
+	/**
+	 * @param args
+	 */
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		AsciiChars.printNumbers();
+		AsciiChars.printUpperCase();
+		AsciiChars.printLowerCase();
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter a string: ");     // type a word and hit enter
+		String someString = sc.next();
+		System.out.println("Hello " + someString);
+		int upperLimit = 100;
+		Random generator = new Random();
+		
+		while(true) {
+			System.out.println("Enter Y or Yes to continue to survey! Enter any other key to exit");
+			String flag=sc.next();
+			if(flag.equalsIgnoreCase("y") || flag.equalsIgnoreCase("YES")) {
+			}
+			else{
+				System.out.println("Please return later to complete the survey.Exiting...");
+				return;
+			}
+			//
+			System.out.println("What is the name of your favorite pet? (jack,jenny)");
+			String petName=sc.next();
+			int pet_age;
+			while(true)
+			{
+				try {
+					System.out.println("What is the age your favourite pet? (5,2)");
+					pet_age=Integer.parseInt(sc.next());
+					break;
+				}
+				catch(Exception e) {
+					System.out.println("Please enter a number: "+e.toString());
+					}
+			}
+			//lucky number input
+			int lucky_no;
+			while(true)
+			{
+				try {
+					System.out.println("What is your lucky number? (23,7,5)");
+					lucky_no=Integer.parseInt(sc.next());
+					break;
+					}
+				catch(Exception e) {
+					System.out.println("Please enter a number: "+e.toString());
+					}
+			}
+			int jersey_no;
+			while(true)
+			{
+				try {
+					System.out.println("Do you have favourite quaterback? If yes what is the jersey number?(enter -1 if no favourite quaterback else enter the jersey number)");
+					jersey_no=Integer.parseInt(sc.next());
+					break;
+					}
+				catch(Exception e) {
+					System.out.println("Please enter a number: "+e.toString());
+					}
+			}
+			
+			int car_model_year;
+			while(true)
+			{
+				try {
+					System.out.println("What is two-digit model year of your car? (20,18,15)");
+					car_model_year=Integer.parseInt(sc.next());
+					break;
+					}
+				catch(Exception e) {
+					System.out.println("Please enter a number: "+e.toString());
+					}
+			}
+			
+			System.out.println("What is the first name of your favorite actor or actress? (Harry,Lisa)");
+			String fav_actor=sc.next();
+
+			int rand_no;
+			while(true)
+			{
+				try {
+					System.out.println("Enter a random number between 1 and 50 (25,49)");
+					 rand_no=Integer.parseInt(sc.next());
+					break;
+					}
+				catch(Exception e) {
+					System.out.println("Please enter a number: "+e.toString());
+					}
+			}
+			
+			//generate three random nos
+			int random1 = generator.nextInt(upperLimit);					
+			int random2 = generator.nextInt(upperLimit);
+			int random3 = generator.nextInt(upperLimit);
+			System.out.println("Random nos:"+random1+","+random2+","+random3);
+			//generation of magic-ball
+			int magic_ball=jersey_no!=-1?jersey_no:lucky_no;
+			magic_ball*=random1;
+			while(magic_ball>75)
+				magic_ball-=75;
+			//System.out.println("Magic ball:"+magic_ball);
+			//lottery nos
+			ArrayList<Integer> lt=new ArrayList<Integer>();
+			lt.add((int)petName.charAt(2));
+			lt.add(lucky_no+car_model_year);
+			lt.add(rand_no-random2);
+			lt.add(pet_age+car_model_year);
+			lt.add((int)fav_actor.charAt(0));
+			int count=0;
+			for(int i:lt) {
+				if(i>65) {
+					while(i>65)
+						i-=65;
+				}
+				else if(i<1) {
+					while(i<0)
+						i+=65;
+				}
+				lt.set(count,i);
+				count+=1;
+				//System.out.print(i+";");
+
+			}
+			System.out.print("Lottery Numbers: ");
+			String listStr=lt.toString();
+			System.out.print(listStr.substring(1, listStr.length()-1)+" Magic ball: ");
+			System.out.println(magic_ball);
+				
+		}
+	}
+
+}
